@@ -19,6 +19,14 @@ Set the environment variables `CAC_API_KEY` and `CAC_LOGIN` and then invoke the 
       --list       List active servers
       --host HOST  List details about the specific host
 
+## Extra vars
+
+It's possible to define extra vars using the `Notes` section in CloudAtCost panel.
+
+Unfortunately that field does not support new lines, but you can use `__CAC__` as separator to specify multiple variables inline; e.g.:
+
+    ansible_user=myuser__CAC__ansible_variable=foo__CAC__ansible_variable2=big foo
+
 ## License
 
 BSD

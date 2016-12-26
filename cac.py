@@ -70,6 +70,10 @@ class CloudAtCostInventory(object):
                     inventory['_meta']['hostvars'][id] = {}
                     inventory['_meta']['hostvars'][id]['ansible_host'] = data['ip']
                     inventory['_meta']['hostvars'][id]['ansible_password'] = data['rootpass']
+                    for v in data['panel_note'].split('__CAC__'):
+                        key = v.split('=')[0]
+                        value = v.split('=')[1]
+                        inventory['_meta']['hostvars'][id][key] = value
         else:
             print ("Cannot fetch server list!")
             sys.exit(1)
